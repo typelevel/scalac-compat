@@ -1,0 +1,39 @@
+name := "scalac-compat"
+
+ThisBuild / tlBaseVersion := "0.1"
+
+ThisBuild / organization     := "org.typelevel"
+ThisBuild / organizationName := "Typelevel"
+ThisBuild / startYear        := Some(2022)
+ThisBuild / licenses         := Seq(License.Apache2)
+ThisBuild / developers := List(
+  tlGitHubDev("satorg", "Sergey Torgashov")
+)
+
+ThisBuild / tlSonatypeUseLegacyHost := false
+
+val Scala212 = "2.12.17"
+val Scala213 = "2.13.10"
+val Scala3   = "3.2.0"
+
+ThisBuild / scalaVersion := Scala213
+
+ThisBuild / crossScalaVersions := Seq(
+  Scala212,
+  Scala213,
+  Scala3
+)
+
+lazy val root = tlCrossRootProject.aggregate(annotation)
+
+lazy val munitVersion = "0.7.29"
+
+lazy val annotation = crossProject(JVMPlatform)
+  .crossType(CrossType.Pure)
+  .in(file("annotation"))
+  .settings(
+    name := "scalac-compat-annotation",
+    libraryDependencies ++= Seq(
+      "org.scalameta" %%% "munit" % munitVersion % Test
+    )
+  )
