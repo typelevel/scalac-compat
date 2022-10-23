@@ -35,5 +35,7 @@ lazy val annotation = crossProject(JVMPlatform)
     name := "scalac-compat-annotation",
     libraryDependencies ++= Seq(
       "org.scalameta" %%% "munit" % munitVersion % Test
-    )
+    ),
+    // Required for tests but also good for the main code.
+    tlFatalWarnings := true
   )
