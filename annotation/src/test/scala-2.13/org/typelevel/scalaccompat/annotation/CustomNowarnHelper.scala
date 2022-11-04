@@ -28,8 +28,13 @@ object CustomNowarnHelper {
   @deprecated("deprecated for Scala v2.13", "forever")
   def deprecatedInScala213() = ()
 
-  @deprecated("deprecated for Scala v2", "forever")
+  @deprecated("deprecated for Scala v2.13", "forever")
   def deprecatedInScala2() = ()
 
   def deprecatedInScala3() = ()
+
+  def deprecatedInScala212andScala3() = ()
+
+  @deprecated("deprecated for Scala v2.13", "forever")
+  def deprecatedInScala213andScala3() = ()
 }

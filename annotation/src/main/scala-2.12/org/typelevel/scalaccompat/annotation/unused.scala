@@ -30,6 +30,6 @@ import scala.annotation.meta
 @nowarn(
   "cat=other&msg=Implementation restriction: subclassing ClassfileAnnotation does not\nmake your annotation visible at runtime."
 )
-class unused(message: String) extends nowarn("cat=unused") {
+class unused(@unused message: String) extends nowarn("cat=unused") {
   def this() = this("")
 }
