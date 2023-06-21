@@ -14,20 +14,8 @@
  * limitations under the License.
  */
 
-package org.typelevel.scalaccompat
+package org.typelevel.scalaccompat.annotation
 
-/** Custom annotations for Scala v3
-  */
-package object annotation {
-  import internal._
-
-  type nowarn    = scala.annotation.nowarn
-  type nowarn2   = nowarnIgnored
-  type nowarn212 = nowarnIgnored
-  type nowarn213 = nowarnIgnored
-  type nowarn3   = nowarn
-
-  type targetName3 = scala.annotation.targetName
-
-  type unused = scala.annotation.unused
+object CustomTargetNameHelper {
+  final val isScala3 = true
 }

@@ -26,4 +26,6 @@ package object annotation {
   type nowarn212 = nowarn
   type nowarn213 = nowarnIgnored
   type nowarn3   = nowarnIgnored
+
+  type targetName3 = targetNameIgnored
 }
