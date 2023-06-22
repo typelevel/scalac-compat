@@ -27,5 +27,7 @@ package object annotation {
   type nowarn213 = nowarn
   type nowarn3   = nowarnIgnored
 
+  type targetName3 = targetNameIgnored
+
   type unused = scala.annotation.unused
 }

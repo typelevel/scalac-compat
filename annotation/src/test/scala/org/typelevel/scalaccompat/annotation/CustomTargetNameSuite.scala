@@ -14,20 +14,25 @@
  * limitations under the License.
  */
 
-package org.typelevel.scalaccompat
+package org.typelevel.scalaccompat.annotation
 
-/** Custom annotations for Scala v3
-  */
-package object annotation {
-  import internal._
+import munit.FunSuite
 
-  type nowarn    = scala.annotation.nowarn
-  type nowarn2   = nowarnIgnored
-  type nowarn212 = nowarnIgnored
-  type nowarn213 = nowarnIgnored
-  type nowarn3   = nowarn
+class CustomTargetNameSuite extends FunSuite {
 
-  type targetName3 = scala.annotation.targetName
+  @targetName3("bar")
+  def foo(): Unit = ()
 
-  type unused = scala.annotation.unused
+  test("targetName3 respected on Scala 3 only") {
+    val methods = getClass().getMethods().map(_.getName)
+
+    if (CustomTargetNameHelper.isScala3) {
+      assert(clue(methods).contains("bar"))
+      assert(!clue(methods).contains("foo"))
+    } else { // Scala 2
+      assert(clue(methods).contains("foo"))
+      assert(!clue(methods).contains("bar"))
+    }
+  }
+
 }
