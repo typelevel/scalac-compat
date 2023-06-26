@@ -29,5 +29,11 @@ package object annotation {
 
   type targetName3 = scala.annotation.targetName
 
+  type uncheckedVariance    = scala.annotation.unchecked.uncheckedVariance
+  type uncheckedVariance2   = uncheckedVarianceIgnored
+  type uncheckedVariance212 = uncheckedVarianceIgnored
+  type uncheckedVariance213 = uncheckedVarianceIgnored
+  type uncheckedVariance3   = uncheckedVariance
+
   type unused = scala.annotation.unused
 }

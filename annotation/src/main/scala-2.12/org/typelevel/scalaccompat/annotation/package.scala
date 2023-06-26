@@ -28,4 +28,10 @@ package object annotation {
   type nowarn3   = nowarnIgnored
 
   type targetName3 = targetNameIgnored
+
+  type uncheckedVariance    = scala.annotation.unchecked.uncheckedVariance
+  type uncheckedVariance2   = uncheckedVariance
+  type uncheckedVariance212 = uncheckedVariance
+  type uncheckedVariance213 = uncheckedVarianceIgnored
+  type uncheckedVariance3   = uncheckedVarianceIgnored
 }
