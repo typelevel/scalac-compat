@@ -50,7 +50,7 @@ jobs:
 
       - name: sbt update
         if: matrix.java == 'temurin@8' && steps.setup-java-temurin-8.outputs.cache-hit == 'false'
-        run: sbt 'project ${{ matrix.project }}' '++ ${{ matrix.scala }}' reload +update
+        run: sbt +update
 
       - name: Check that workflows are up to date
         run: sbt githubWorkflowCheck
@@ -111,7 +111,7 @@ jobs:
 
       - name: sbt update
         if: matrix.java == 'temurin@8' && steps.setup-java-temurin-8.outputs.cache-hit == 'false'
-        run: sbt reload +update
+        run: sbt +update
 
       - name: Download target directories (2.12, rootJVM)
         uses: actions/download-artifact@v3
@@ -192,10 +192,10 @@ jobs:
 
       - name: sbt update
         if: matrix.java == 'temurin@8' && steps.setup-java-temurin-8.outputs.cache-hit == 'false'
-        run: sbt reload +update
+        run: sbt +update
 
       - name: Submit Dependencies
         uses: scalacenter/sbt-dependency-submission@v2
         with:
-          modules-ignore: root rootJS rootJVM rootNative
-          configs-ignore: test scala-tool scala-doc-tool
+          modules-ignore: rootjs_2.12 rootjs_2.13 rootjs_3 rootjvm_2.12 rootjvm_2.13 rootjvm_3 rootnative_2.12 rootnative_2.13 rootnative_3
+          configs-ignore: test scala-tool scala-doc-tool test-internal
