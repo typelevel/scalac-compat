@@ -28,7 +28,7 @@ lazy val root = tlCrossRootProject.aggregate(annotation)
 
 lazy val munitVersion = "0.7.29"
 
-lazy val annotation = crossProject(JVMPlatform)
+lazy val annotation = crossProject(JVMPlatform, JSPlatform, NativePlatform)
   .crossType(CrossType.Pure)
   .in(file("annotation"))
   .settings(
