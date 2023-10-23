@@ -19,7 +19,7 @@ The module is published for Scala 2.12.x, 2.13.x and 3.2.x:
 ivy"org.typelevel::scalac-compat-annotation:{{MODULE_VERSION}}"
 
 // Scala CLI
-//> using lib "org.typelevel::scalac-compat-annotation:{{MODULE_VERSION}}"
+//> using dep org.typelevel::scalac-compat-annotation:{{MODULE_VERSION}}
 ```
 Then import the module annotations:
 ```scala
