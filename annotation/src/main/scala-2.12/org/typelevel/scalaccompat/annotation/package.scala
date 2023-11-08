@@ -29,6 +29,8 @@ package object annotation {
 
   type targetName3 = targetNameIgnored
 
+  type threadUnsafe3 = threadUnsafeIgnored
+
   type uncheckedVariance    = scala.annotation.unchecked.uncheckedVariance
   type uncheckedVariance2   = uncheckedVariance
   type uncheckedVariance212 = uncheckedVariance
