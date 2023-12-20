@@ -27,6 +27,8 @@ package object annotation {
   type nowarn213 = nowarnIgnored
   type nowarn3   = nowarn
 
+  type static3 = scala.annotation.static
+
   type targetName3 = scala.annotation.targetName
 
   type threadUnsafe3 = scala.annotation.threadUnsafe
