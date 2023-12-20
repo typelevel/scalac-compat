@@ -20,7 +20,7 @@ import munit.FunSuite
 
 class CustomStaticDemo
 object CustomStaticDemo {
-  @static3 val foo = 42
+  @static3 val foo = new Object
 }
 
 class CustomStaticSuite extends FunSuite {
