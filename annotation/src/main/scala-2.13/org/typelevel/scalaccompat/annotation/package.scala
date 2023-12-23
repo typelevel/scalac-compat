@@ -27,6 +27,8 @@ package object annotation {
   type nowarn213 = nowarn
   type nowarn3   = nowarnIgnored
 
+  type static3 = staticIgnored
+
   type targetName3 = targetNameIgnored
 
   type threadUnsafe3 = threadUnsafeIgnored
