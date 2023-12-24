@@ -16,6 +16,6 @@
 
 package org.typelevel.scalaccompat.annotation
 
-object CustomTargetNameHelper {
+object ScalacVersionHelper {
   final val isScala3 = false
 }

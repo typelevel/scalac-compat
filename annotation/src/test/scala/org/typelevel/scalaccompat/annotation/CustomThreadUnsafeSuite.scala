@@ -35,7 +35,7 @@ class CustomThreadUnsafeSuite extends FunSuite {
 
   test("threadUnsafe3 respected on Scala 3 only") {
     Future.sequence(List(Future(foo), Future(foo))).map { _ =>
-      if (CustomThreadUnsafeHelper.isScala3) {
+      if (ScalacVersionHelper.isScala3) {
         assertEquals(counter.get(), 2)
       } else { // Scala 2
         assertEquals(counter.get(), 1)

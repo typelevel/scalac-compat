@@ -26,7 +26,7 @@ class CustomTargetNameSuite extends FunSuite {
   test("targetName3 respected on Scala 3 only") {
     val methods = getClass().getMethods().map(_.getName)
 
-    if (CustomTargetNameHelper.isScala3) {
+    if (ScalacVersionHelper.isScala3) {
       assert(clue(methods).contains("bar"))
       assert(!clue(methods).contains("foo"))
     } else { // Scala 2
