@@ -28,7 +28,7 @@ class CustomStaticSuite extends FunSuite {
   test("static3 respected on Scala 3 only") {
     val fields = classOf[CustomStaticDemo].getFields().map(_.getName).toList
 
-    if (CustomStaticHelper.isScala3) {
+    if (ScalacVersionHelper.isScala3) {
       assertEquals(fields, List("foo"))
     } else { // Scala 2
       assertEquals(fields, Nil)

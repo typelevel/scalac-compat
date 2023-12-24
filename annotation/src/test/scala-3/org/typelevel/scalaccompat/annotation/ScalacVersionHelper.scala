@@ -16,6 +16,6 @@
 
 package org.typelevel.scalaccompat.annotation
 
-object CustomStaticHelper {
+object ScalacVersionHelper {
   final val isScala3 = true
 }
