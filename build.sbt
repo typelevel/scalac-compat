@@ -26,7 +26,7 @@ ThisBuild / crossScalaVersions := Seq(
 
 lazy val root = tlCrossRootProject.aggregate(annotation)
 
-lazy val munitVersion = "0.7.29"
+lazy val munitVersion = "1.0.0"
 
 lazy val annotation = crossProject(JVMPlatform)
   .crossType(CrossType.Pure)
