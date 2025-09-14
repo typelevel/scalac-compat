@@ -16,7 +16,7 @@
 
 package org.typelevel.scalaccompat.annotation
 
-import CustomUncheckedVarianceHelper._
+import CustomUncheckedVarianceHelper.*
 
 object CustomUncheckedVarianceSuite {
 

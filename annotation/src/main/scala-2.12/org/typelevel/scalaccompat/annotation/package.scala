@@ -19,7 +19,7 @@ package org.typelevel.scalaccompat
 /** Custom annotations for Scala v2.12
   */
 package object annotation {
-  import internal._
+  import internal.*
 
   type nowarn    = scala.annotation.nowarn
   type nowarn2   = nowarn

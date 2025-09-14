@@ -20,7 +20,7 @@ package org.typelevel.scalaccompat.annotation
   * annotation tested is not working as expected.
   */
 class CustomNowarnSuite {
-  import CustomNowarnHelper._
+  import CustomNowarnHelper.*
 
   def testNowarn() = {
     deprecatedEverywhere(): @nowarn("cat=deprecation")

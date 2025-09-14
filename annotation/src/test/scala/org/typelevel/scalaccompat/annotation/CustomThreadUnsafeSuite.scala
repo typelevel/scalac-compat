@@ -19,7 +19,7 @@ package org.typelevel.scalaccompat.annotation
 import munit.FunSuite
 
 import java.util.concurrent.atomic.AtomicInteger
-import scala.concurrent.ExecutionContext.Implicits._
+import scala.concurrent.ExecutionContext.Implicits.*
 import scala.concurrent.Future
 
 class CustomThreadUnsafeSuite extends FunSuite {
