@@ -6,7 +6,7 @@ ThisBuild / organization     := "org.typelevel"
 ThisBuild / organizationName := "Typelevel"
 ThisBuild / startYear        := Some(2022)
 ThisBuild / licenses         := Seq(License.Apache2)
-ThisBuild / developers := List(
+ThisBuild / developers       := List(
   tlGitHubDev("satorg", "Sergey Torgashov")
 )
 
@@ -36,7 +36,7 @@ lazy val annotation = crossProject(JVMPlatform)
     ),
     // Required for tests but also good for the main code.
     tlFatalWarnings := true,
-    scalacOptions := {
+    scalacOptions   := {
       scalacOptions.value
         .filterNot { opt =>
           // Remove all partially defined options like '-Xlint:-unused'.
