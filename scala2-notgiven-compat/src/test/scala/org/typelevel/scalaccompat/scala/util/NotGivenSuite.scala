@@ -39,6 +39,14 @@ class NotGivenSuite extends FunSuite {
   // This should NOT compile:
   // implicitly[NotGiven[Exists]]
 
+  test("NotGiven[Exists] should not compile") {
+    val s = compileErrors("""implicitly[NotGiven[Exists]]""")
+
+    val scala2Assertion = s.startsWith("error: Found an implicit value of type")
+    val scala3Assertion = s.startsWith("error: No given instance of type scala.util.NotGiven")
+    assert(scala2Assertion || scala3Assertion)
+  }
+
   /** Shows how to use `NotGiven` as a way to provide a fallback value when another type's implicit
     * is missing from the environment.
     */
