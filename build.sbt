@@ -25,7 +25,7 @@ ThisBuild / crossScalaVersions := Seq(
 
 lazy val root = tlCrossRootProject.aggregate(
   annotation,
-  `scala2-notgiven-compat`
+  features
 )
 
 lazy val munitVersion = "1.2.4"
@@ -56,10 +56,11 @@ lazy val annotation = crossProject(JVMPlatform)
     }
   )
 
-lazy val `scala2-notgiven-compat` = crossProject(JVMPlatform, JSPlatform, NativePlatform)
+lazy val features = crossProject(JVMPlatform, JSPlatform, NativePlatform)
   .crossType(CrossType.Pure)
-  .in(file("scala2-notgiven-compat"))
+  .in(file("features"))
   .settings(
+    name := "scalac-compat-features",
     libraryDependencies ++= Seq(
       "org.scalameta" %%% "munit" % munitVersion % Test
     ),
