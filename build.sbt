@@ -61,8 +61,21 @@ lazy val `scala2-notgiven-compat` = crossProject(JVMPlatform, JSPlatform, Native
   .in(file("scala2-notgiven-compat"))
   .settings(
     libraryDependencies ++= Seq(
-      "org.scala-lang.modules" %% "scala-collection-compat" % "2.14.0",
-      "org.scalameta"         %%% "munit"                   % munitVersion % Test
+      "org.scalameta" %%% "munit" % munitVersion % Test
     ),
+    scalacOptions := {
+      scalacOptions.value
+        .filterNot { opt =>
+          // Remove all partially defined options like '-Xlint:-unused'.
+          opt.startsWith("-Xlint") ||
+          opt.startsWith("-Ywarn-unused") ||
+          opt.startsWith("-Wunused")
+        } ++
+        CrossVersion.partialVersion(scalaVersion.value).fold(Seq.empty[String]) {
+          case (2, 12) => Seq("-Xlint", "-Ywarn-unused")
+          case (2, 13) => Seq("-Xlint", "-Wunused")
+          case (3, _)  => Seq("-Wunused:all")
+        }
+    },
     tlVersionIntroduced := Map("2.12" -> "0.1.5", "2.13" -> "0.1.5", "3" -> "0.1.5")
   )
