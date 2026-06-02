@@ -53,7 +53,7 @@ class NotGivenSuite extends FunSuite {
   test("NotGiven allows providing a fallback when another type is missing") {
     trait A
 
-    def choice(implicit @scala.annotation.unused ev: NotGiven[A]): String = "NotGiven[A]"
+    def choice(implicit ev: NotGiven[A]): String = "NotGiven[A]"
 
     assertEquals(choice, "NotGiven[A]")
   }
@@ -64,14 +64,8 @@ class NotGivenSuite extends FunSuite {
     trait TagA
     trait TagB
 
-    def onlyOneA(implicit
-      @scala.annotation.unused ev: TagA,
-      @scala.annotation.unused ng: NotGiven[TagB]
-    ): String = "A only"
-    def onlyOneB(implicit
-      @scala.annotation.unused ev: TagB,
-      @scala.annotation.unused ng: NotGiven[TagA]
-    ): String = "B only"
+    def onlyOneA(implicit ev: TagA, ng: NotGiven[TagB]): String = "A only"
+    def onlyOneB(implicit ev: TagB, ng: NotGiven[TagA]): String = "B only"
 
     {
       implicit val a: TagA = new TagA {}
@@ -93,9 +87,7 @@ class NotGivenSuite extends FunSuite {
     def useSimple[A](implicit ev: SimpleType[A]): String = ev.toString
 
     trait FallbackLowPriority {
-      implicit def fallback[A](implicit
-        @scala.annotation.unused ev: NotGiven[List[A]]
-      ): SimpleType[A] = new SimpleType[A] {
+      implicit def fallback[A](implicit ev: NotGiven[List[A]]): SimpleType[A] = new SimpleType[A] {
         override def toString = "fallback"
       }
     }

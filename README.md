@@ -2,7 +2,7 @@
 
 *scalac-compat* is a <sub>micro</sub>library containing a set of lightweight tools designed to tackle mismatches between different Scala compiler versions in cross-build projects.
 
-Currently, it consists of two modules: *scalac-compat-annotation* and *scala2-notgiven-compat*.
+Currently, it consists of two modules: *scalac-compat-annotation* and *scala2-notgiven-features*.
 
 ## scalac-compat-annotation
 
