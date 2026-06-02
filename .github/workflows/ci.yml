@@ -83,11 +83,11 @@ jobs:
 
       - name: Make target directories
         if: github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/main')
-        run: mkdir -p annotation/.jvm/target scala2-notgiven-compat/.js/target scala2-notgiven-compat/.jvm/target scala2-notgiven-compat/.native/target project/target
+        run: mkdir -p features/.jvm/target features/.js/target annotation/.jvm/target features/.native/target project/target
 
       - name: Compress target directories
         if: github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/main')
-        run: tar cf targets.tar annotation/.jvm/target scala2-notgiven-compat/.js/target scala2-notgiven-compat/.jvm/target scala2-notgiven-compat/.native/target project/target
+        run: tar cf targets.tar features/.jvm/target features/.js/target annotation/.jvm/target features/.native/target project/target
 
       - name: Upload target directories
         if: github.event_name != 'pull_request' && (startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/main')
