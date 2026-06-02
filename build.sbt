@@ -62,6 +62,7 @@ lazy val features = crossProject(JVMPlatform, JSPlatform, NativePlatform)
   .settings(
     name := "scalac-compat-features",
     libraryDependencies ++= Seq(
+      "org.scala-lang.modules" %% "scala-collection-compat" % "2.14.0" % Test,
       "org.scalameta" %%% "munit" % munitVersion % Test
     ),
     scalacOptions := {
