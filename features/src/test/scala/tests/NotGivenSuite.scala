@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-package other.org.typelevel.scalaccompat.scala.util
+package tests
 
-import org.typelevel.scalaccompat.scala.util.NotGiven
 import munit.FunSuite
+import org.typelevel.scalaccompat.annotation.unused
+import org.typelevel.scalaccompat.scala.util.NotGiven
 
 /** Examples demonstrating how to use `NotGiven` for cross-version compatibility.
   *
@@ -53,7 +54,7 @@ class NotGivenSuite extends FunSuite {
   test("NotGiven allows providing a fallback when another type is missing") {
     trait A
 
-    def choice(implicit @scala.annotation.unused ev: NotGiven[A]): String = "NotGiven[A]"
+    def choice(implicit @unused ev: NotGiven[A]): String = "NotGiven[A]"
 
     assertEquals(choice, "NotGiven[A]")
   }
@@ -65,12 +66,12 @@ class NotGivenSuite extends FunSuite {
     trait TagB
 
     def onlyOneA(implicit
-      @scala.annotation.unused ev: TagA,
-      @scala.annotation.unused ng: NotGiven[TagB]
+      @unused ev: TagA,
+      @unused ng: NotGiven[TagB]
     ): String = "A only"
     def onlyOneB(implicit
-      @scala.annotation.unused ev: TagB,
-      @scala.annotation.unused ng: NotGiven[TagA]
+      @unused ev: TagB,
+      @unused ng: NotGiven[TagA]
     ): String = "B only"
 
     {
@@ -94,7 +95,7 @@ class NotGivenSuite extends FunSuite {
 
     trait FallbackLowPriority {
       implicit def fallback[A](implicit
-        @scala.annotation.unused ev: NotGiven[List[A]]
+        @unused ev: NotGiven[List[A]]
       ): SimpleType[A] = new SimpleType[A] {
         override def toString = "fallback"
       }
