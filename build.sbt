@@ -7,7 +7,8 @@ ThisBuild / organizationName := "Typelevel"
 ThisBuild / startYear        := Some(2022)
 ThisBuild / licenses         := Seq(License.Apache2)
 ThisBuild / developers       := List(
-  tlGitHubDev("satorg", "Sergey Torgashov")
+  tlGitHubDev("satorg", "Sergey Torgashov"),
+  tlGitHubDev("bpholt", "Brian Holt")
 )
 
 val Scala212 = "2.12.21"
@@ -22,7 +23,10 @@ ThisBuild / crossScalaVersions := Seq(
   Scala3
 )
 
-lazy val root = tlCrossRootProject.aggregate(annotation)
+lazy val root = tlCrossRootProject.aggregate(
+  annotation,
+  features
+)
 
 lazy val munitVersion = "1.3.3"
 
@@ -50,4 +54,29 @@ lazy val annotation = crossProject(JVMPlatform)
           case (3, _)  => Seq("-Wunused:all")
         }
     }
+  )
+
+lazy val features = crossProject(JVMPlatform, JSPlatform, NativePlatform)
+  .crossType(CrossType.Pure)
+  .in(file("features"))
+  .settings(
+    name := "scalac-compat-features",
+    libraryDependencies ++= Seq(
+      "org.scalameta" %%% "munit" % munitVersion % Test
+    ),
+    scalacOptions := {
+      scalacOptions.value
+        .filterNot { opt =>
+          // Remove all partially defined options like '-Xlint:-unused'.
+          opt.startsWith("-Xlint") ||
+          opt.startsWith("-Ywarn-unused") ||
+          opt.startsWith("-Wunused")
+        } ++
+        CrossVersion.partialVersion(scalaVersion.value).fold(Seq.empty[String]) {
+          case (2, 12) => Seq("-Xlint", "-Ywarn-unused")
+          case (2, 13) => Seq("-Xlint", "-Wunused")
+          case (3, _)  => Seq("-Wunused:all")
+        }
+    },
+    tlVersionIntroduced := Map("2.12" -> "0.1.5", "2.13" -> "0.1.5", "3" -> "0.1.5")
   )
