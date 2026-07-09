@@ -28,7 +28,7 @@ lazy val root = tlCrossRootProject.aggregate(
   features
 )
 
-lazy val munitVersion = "1.3.3"
+lazy val munitVersion = "1.3.4"
 
 lazy val annotation = crossProject(JVMPlatform)
   .crossType(CrossType.Pure)
